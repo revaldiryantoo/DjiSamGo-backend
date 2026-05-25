@@ -33,18 +33,6 @@ async function kirimNotifikasi(fcmToken, lat, lng, waktu) {
 
     android: {
       priority: 'high',
-      // ✅ Kunci utama: tambahkan "direct_boot_ok" dan 
-      //    jangan set sound/vibrate di sini — biarkan Android handle
-      //    dari GpsTrackerFCMService.kt
-      notification: {
-        channelId:           'gps_alarm_channel',
-        priority:            'max',
-        defaultSound:        false,   // ← matikan suara default FCM
-        defaultVibrateTimings: false, // ← matikan getar default FCM
-        color:               '#D32F2F',
-        // Tidak set sound & vibrateTimings
-        // agar GpsTrackerFCMService yang handle keduanya
-      },
     },
   };
 

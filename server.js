@@ -84,12 +84,14 @@ function mulaiPantau() {
       const berhasil = await kirimNotifikasi(fcmToken, lat, lng, waktu);
 
       if (berhasil) {
-        await db.ref('gpstracker/alarm').update({
-          notificationSent: true,
-          notificationTime: new Date().toLocaleString('id-ID'),
-        });
+          await db.ref('gpstracker/alarm').update({
+              notificationSent: true,
+              notificationTime: new Date().toLocaleString('id-ID', {
+                  timeZone: 'Asia/Jakarta'  // ✅ tambah ini
+              }),
+          });
       }
-
+      
     } else if (status !== 'triggered') {
       statusTerakhir = status;
       console.log(`📊 Status alarm: ${status}`);

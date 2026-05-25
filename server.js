@@ -23,7 +23,11 @@ async function kirimNotifikasi(fcmToken, lat, lng, waktu) {
   const pesan = {
     token: fcmToken,
 
-    // ✅ Data tetap ada agar onMessageReceived dipanggil juga
+    notification: {
+      title: '🚨 Alarm Keamanan!',
+      body:  `Kendaraan bergerak! Lat: ${parseFloat(lat).toFixed(5)}, Long: ${parseFloat(lng).toFixed(5)}`,
+    },
+
     data: {
       type:      'alarm_triggered',
       latitude:  String(lat),

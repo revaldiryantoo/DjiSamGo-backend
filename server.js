@@ -64,7 +64,9 @@ function mulaiPantau() {
     const status = data.status    || 'idle';
     const lat    = data.latitude  || 0;
     const lng    = data.longitude || 0;
-    const waktu  = data.timestamp || new Date().toLocaleString('id-ID');
+    const date   = data.date      || '';
+    const time   = data.time      || '';
+    const waktu  = date && time ? `${date} ${time}` : new Date().toLocaleString('id-ID'); // ← baru
 
     if (status === 'triggered' && statusTerakhir !== 'triggered') {
       console.log('\n⚠️  ALARM! Kendaraan bergerak!');
